@@ -1,29 +1,62 @@
-let userScore = 0;
-let computerScore = 0;
-let playerSelection;
+var userScore = 0;
+var computerScore = 0;
 let computerSelection;
 
 function getComputerChoice(){
     let num = Math.floor(Math.random()*3);
-    let result;
+    let choices = ["rock","paper","scissor"];
 
-    if(num === 0){
-        result = "rock";
-    }
-    else if(num === 1){
-        result = "paper";
-    }
-
-    else if(num === 2){
-        result = "scissor";
-    }
-
-    return result;
+    return choices[num];
 }
+
+//selects area of 'results' using DOM then creates a <p> which displays the result of round in the <p>. 
+const result = document.querySelector('.result');
+let resultDisplay = document.createElement('p');
+resultDisplay.classList.add('resultDisplay')
+
+//button selectors 
+const btnRock = document.querySelector(".btnRock");
+const btnPaper = document.querySelector('.Paper');
+const btnScissor = document.querySelector('.Scissors');
+
+//Computer Choice 
+const computerChoiceTable = document.querySelector('.computerChoice');
+let  computerChoice = document.createElement('p');
+
+//score counters
+const userScoreTable = document.querySelector('.userScoreCounter');
+let userScoreCount = document.createElement('a');
+const computerScoreCounter = document.querySelector('.computerScoreCounter')
+let computerScoreCount = document.createElement('a');
+
+//button events 
+btnRock.addEventListener("click",()=> {
+    resultDisplay.textContent = playRound('rock',getComputerChoice());
+    result.appendChild(resultDisplay);
+    
+});
+
+btnPaper.addEventListener("click",()=> {
+    resultDisplay.textContent = playRound('paper',getComputerChoice());
+    result.appendChild(resultDisplay);
+
+});
+
+btnScissor.addEventListener("click",()=> {
+    resultDisplay.textContent = playRound('scissor',getComputerChoice());
+    result.appendChild(resultDisplay);
+ 
+});
+
+
+
 
 
 function playRound(playerSelection, computerSelection){
     let result;
+    computerChoice.textContent = computerSelection; 
+    computerChoiceTable.appendChild(computerChoice);  //shows computer's choice in the 'Computer Chooses' box.
+
     if(playerSelection === computerSelection){
         result = "Draw";
     }
@@ -57,11 +90,35 @@ function playRound(playerSelection, computerSelection){
                 userScore += 1;
             }
         }
+
+    //score table
+    userScoreTable.removeChild(userScoreTable.firstChild);
+    userScoreCount.textContent = userScore;
+    userScoreTable.appendChild(userScoreCount);
+    computerScoreCounter.removeChild(computerScoreCounter.firstChild);
+    computerScoreCount.textContent = computerScore;
+    computerScoreCounter.append(computerScoreCount);
+
+    if(userScore == 5 || computerScore == 5){
+        document.querySelectorAll('.btn').forEach((button)=>button.disabled=true);
+        if(userScore > computerScore){
+        return 'Game over, You win!';
+        }
+        else if(computerScore > userScore) {
+        return 'Game over, Computer wins!';
+        }
+    };
+
     return result;
     
 }
 
-function game(playRound){
+
+
+
+
+
+/*function game(playRound){
     for(let x=0; x<5; x++){
         playerSelection = prompt("Rock, Paper, or Scissors? ", "Rock").toLowerCase();
         computerSelection = getComputerChoice();
@@ -73,7 +130,8 @@ function game(playRound){
     console.log("User score: "+ userScore +" Computer score: "+ computerScore);
 
 }
+*/
 
 
-game(playRound);
+//game(playRound);
 

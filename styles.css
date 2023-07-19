@@ -45,6 +45,7 @@ h1.head {
     width: 1000px;
     display: flex;
     justify-content: space-evenly;
+ 
 }
 
 
@@ -54,6 +55,9 @@ h1.head {
     height: 125px;
     width: 200px;
     margin: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -61,4 +65,23 @@ h1.head {
     height: 50px;
     width: 100px;
     margin: 50px;
+
+}
+
+.btn {
+    display:block;
+    margin: auto;
+}
+
+.resultDisplay {
+    font-size: 20px;
+    height: 50px;
+    width: 300px;
+
+}
+
+.score {
+    margin: 50px;
+    font-size: 20px;
+    width: 200px;
 }
