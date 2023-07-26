@@ -22,6 +22,8 @@ const btnScissor = document.querySelector('.Scissors');
 //Computer Choice 
 const computerChoiceTable = document.querySelector('.computerChoice');
 let  computerChoice = document.createElement('p');
+const computerChoiceContainer = document.querySelector('.choiceContainer');
+
 
 //score counters
 const userScoreTable = document.querySelector('.userScoreCounter');
@@ -50,13 +52,15 @@ btnScissor.addEventListener("click",()=> {
 
 
 
-
-
 function playRound(playerSelection, computerSelection){
     let result;
+    let computerElement = document.createElement('img');
+    computerElement.src = `${computerSelection}.png`
+    computerChoiceContainer.removeChild(computerChoiceContainer.firstChild);
+    computerChoiceContainer.appendChild(computerElement);
     computerChoice.textContent = computerSelection; 
-    computerChoiceTable.appendChild(computerChoice);  //shows computer's choice in the 'Computer Chooses' box.
-
+    computerChoiceTable.appendChild(computerChoice); 
+    
     if(playerSelection === computerSelection){
         result = "Draw";
     }
