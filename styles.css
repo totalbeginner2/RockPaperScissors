@@ -32,6 +32,7 @@ h1.head {
 }
 
 .selection {
+    
     border: 3px solid #B66D0D;
     border-radius: 1ch; 
     height: 125px;
@@ -89,4 +90,5 @@ h1.head {
 img {
     height: 50px;
     width: 50px;
+    margin: 10px;
 }
